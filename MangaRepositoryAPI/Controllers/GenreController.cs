@@ -16,32 +16,87 @@ namespace MangaRepositoryAPI.Controllers
         #region Get
 
         [HttpGet]
-        public IActionResult GetAll() { }
+        public IActionResult GetAll() 
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex);
+            }
+        }
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult Get(int id) { }
+        public IActionResult GetById(int id) 
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex);
+            }
+        }
 
         #endregion
 
         #region Post
 
         [HttpPost]
-        public IActionResult Create() { }
+        public IActionResult Create() 
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex);
+            }
+        }
 
         #endregion
 
         #region Put
 
         [HttpPut]
-        public IActionResult Update() { }
+        public IActionResult Update() 
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex);
+            }
+        }
 
         #endregion
 
         #region Delete
 
         [HttpDelete]
-        public IActionResult Delete() { }
+        public IActionResult Delete() 
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex);
+            }
+        }
 
         #endregion
     }

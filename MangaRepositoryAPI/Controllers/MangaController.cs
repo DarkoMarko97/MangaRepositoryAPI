@@ -16,11 +16,33 @@ namespace MangaRepositoryAPI.Controllers
         #region Get
 
         [HttpGet]
-        public IActionResult GetAll() { }
+        public IActionResult GetAll() 
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex);
+            }
+        }
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult GetById() { }
+        public IActionResult GetById() 
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex);
+            }
+        }
 
         #endregion
 
@@ -28,36 +50,102 @@ namespace MangaRepositoryAPI.Controllers
 
         [HttpGet]
         [Route("GetByAuthor/{Authors}")]
-        public IActionResult GetByAuthor() { }
+        public IActionResult GetByAuthor() 
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex);
+            }
+        }
 
         [HttpGet]
         [Route("GetByGenres/{Genres}")]
-        public IActionResult GetByGenres() { }
+        public IActionResult GetByGenres() 
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex);
+            }
+        }
 
         [HttpGet]
         [Route("GetByStatus/{Status}")]
-        public IActionResult GetByStatus() { }
+        public IActionResult GetByStatus() 
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex);
+            }
+        }
 
         #endregion
 
         #region Post
 
         [HttpPost]
-        public IActionResult Create() { }
+        public IActionResult Create() 
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex);
+            }
+        }
 
         #endregion
 
         #region Put
 
         [HttpPut]
-        public IActionResult Update() { }
+        public IActionResult Update() 
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex);
+            }
+        }
 
         #endregion
 
         #region Delete
 
         [HttpDelete]
-        public IActionResult Delete() { }
+        public IActionResult Delete() 
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex);
+            }
+        }
 
         #endregion
     }
