@@ -2,6 +2,7 @@
 using MangaRepositoryAPI.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MangaRepositoryAPI.Controllers
 {
@@ -20,7 +21,8 @@ namespace MangaRepositoryAPI.Controllers
         {
             try
             {
-
+                var result = _ctx.Genres.ToList().ConvertAll(_mapper.MapEntityToDTO);
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -31,11 +33,18 @@ namespace MangaRepositoryAPI.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult GetById(int id) 
+        public IActionResult GetById([FromRoute] Guid id) 
         {
             try
             {
-
+                var result = _ctx.Genres
+                                 .Include(g => g.Mangas)
+                                 .SingleOrDefault(g => g.GenreId == id);
+                if (result == null) 
+                {
+                    return NotFound();
+                }
+                return Ok(_mapper.MapEntityToDetailedDTO(result));
             }
             catch (Exception ex)
             {
@@ -49,11 +58,24 @@ namespace MangaRepositoryAPI.Controllers
         #region Post
 
         [HttpPost]
-        public IActionResult Create() 
+        public IActionResult Create([FromBody] GenreDTO dto) 
         {
             try
             {
-
+                var result = new Genre() 
+                {
+                    GenreId = Guid.NewGuid(),
+                    GenreName = dto.GenreName
+                };
+                _ctx.Genres.Add(result);
+                if (_ctx.SaveChanges() > 0) 
+                {
+                    return Ok();
+                }
+                else 
+                {
+                    return UnprocessableEntity();
+                }
             }
             catch (Exception ex)
             {
@@ -67,11 +89,22 @@ namespace MangaRepositoryAPI.Controllers
         #region Put
 
         [HttpPut]
-        public IActionResult Update() 
+        public IActionResult Update([FromBody] GenreDTO dto, [FromRoute] Guid id) 
         {
             try
             {
-
+                var result = _ctx.Genres
+                                 .Include(g => g.Mangas)
+                                 .SingleOrDefault(g => g.GenreId == id);
+                result.GenreName = dto.GenreName;
+                if (_ctx.SaveChanges() > 0) 
+                {
+                    return Ok();
+                }
+                else 
+                {
+                    return UnprocessableEntity();
+                }
             }
             catch (Exception ex)
             {
@@ -85,11 +118,26 @@ namespace MangaRepositoryAPI.Controllers
         #region Delete
 
         [HttpDelete]
-        public IActionResult Delete() 
+        public IActionResult Delete([FromRoute] Guid id) 
         {
             try
             {
-
+                var result = _ctx.Genres
+                                 .Include(g => g.Mangas)
+                                 .SingleOrDefault(g => g.GenreId == id);
+                if (result == null) 
+                {
+                    return NotFound();
+                }
+                _ctx.Genres.Remove(result);
+                if (_ctx.SaveChanges() > 0) 
+                {
+                    return Ok();
+                }
+                else 
+                {
+                    return UnprocessableEntity();
+                }
             }
             catch (Exception ex)
             {

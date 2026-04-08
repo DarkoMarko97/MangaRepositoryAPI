@@ -31,7 +31,7 @@ namespace MangaRepositoryAPI.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult GetById(int id) 
+        public IActionResult GetById([FromRoute] Guid id) 
         {
             try
             {
@@ -49,7 +49,7 @@ namespace MangaRepositoryAPI.Controllers
         #region Post
 
         [HttpPost]
-        public IActionResult Create() 
+        public IActionResult Create([FromBody] StatusDTO dto) 
         {
             try
             {
@@ -67,7 +67,7 @@ namespace MangaRepositoryAPI.Controllers
         #region Put
 
         [HttpPut]
-        public IActionResult Update() 
+        public IActionResult Update([FromBody] StatusDTO dto,[FromRoute] Guid id) 
         {
             try
             {
@@ -85,7 +85,7 @@ namespace MangaRepositoryAPI.Controllers
         #region Delete
 
         [HttpDelete]
-        public IActionResult Delete() 
+        public IActionResult Delete([FromRoute] Guid id) 
         {
             try
             {

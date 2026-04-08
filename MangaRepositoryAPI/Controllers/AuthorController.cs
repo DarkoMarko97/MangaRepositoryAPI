@@ -28,7 +28,7 @@ namespace MangaRepositoryAPI.Controllers
         {
             try 
             {
-                var result = _ctx.Authors.ToList().ConvertAll(_mapper.MapEntityToDTO) ;
+                var result = _ctx.Authors.ToList().ConvertAll(_mapper.MapEntityToDTO);
                 return Ok(result);
             } 
             catch (Exception ex) 
