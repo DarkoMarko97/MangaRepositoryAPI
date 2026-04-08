@@ -1,8 +1,10 @@
 ﻿namespace MangaRepositoryAPI.DTO.DetailedDTO
 {
-    public class MangaDetailedDTO
+    public class MangaDetailedDTO : MangaDTO
     {
-        public string Title { get; set; }
+        public StatusDTO? Status { get; set; }
+        public List<AuthorDTO> Authors { get; set; } = [];
+        public List<GenreDTO> Genres { get; set; } = [];
 
     }
 }
