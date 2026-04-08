@@ -4,6 +4,6 @@
     {
         public Guid GenreId { get; set; }
         public required string GenreName { get; set; }
-        public List<Manga> Mangas { get; set; } = [];
+        public List<Manga>? Mangas { get; set; } = [];
     }
 }

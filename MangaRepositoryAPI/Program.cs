@@ -1,4 +1,5 @@
 using MangaRepositoryAPI.Data;
+using MangaRepositoryAPI.DTO;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services.AddOpenApi();
 
 var connStr = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddSqlServer<MangaRepoDbContext>(connStr);
+builder.Services.AddSingleton<Mapper>(); 
 
 var app = builder.Build();
 
